@@ -1,0 +1,200 @@
+.kiosk-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.center-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.kiosk-logo {
+  width: 100px;
+  margin-bottom: 2rem;
+}
+
+.welcome-box, .auth-box, .review-box, .printing-box, .done-box {
+  padding: 4rem;
+  max-width: 600px;
+  width: 100%;
+}
+
+.welcome-box h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+}
+
+.btn-large {
+  font-size: 1.4rem;
+  padding: 1rem 3rem;
+  height: auto;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.large-input {
+  font-size: 2rem;
+  letter-spacing: 5px;
+  height: 80px;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+/* Voting Layout */
+.voting-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.voting-header h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.voting-header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.ballot-section {
+  padding: 2rem;
+}
+
+.position-title {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.selection-count {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.candidates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.candidate-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.candidate-card:hover:not(.disabled) {
+  border-color: rgba(59, 130, 246, 0.5);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.candidate-card.selected {
+  border-color: var(--primary);
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.candidate-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkbox {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-app);
+}
+
+.candidate-card.selected .checkbox {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.candidate-name {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.voting-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+/* Review Box */
+.review-section {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: right;
+}
+
+.review-section h4 {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.review-item {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.review-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.review-actions button {
+  flex: 1;
+}
+
+.text-primary { color: var(--primary); }
+.text-success { color: var(--success); }
+.border-success { border-color: rgba(16, 185, 129, 0.5); box-shadow: 0 0 30px rgba(16, 185, 129, 0.1); }

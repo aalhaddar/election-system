@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  station      String?  // null=ADMIN, "CHECK_IN", "KIOSK"
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Voter {
+  id             String   @id @default(cuid())
+  personalId     String   @unique
+  name           String
+  membershipType String   @default("FULL")
+  status         String   @default("NOT_VOTED")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  votes          Vote[]
+}
+
+model Candidate {
+  id            String   @id @default(cuid())
+  personalId    String   @unique
+  formNumber    String
+  name          String
+  qualifications String?
+  jobTitle      String?
+  workplace     String?
+  pictureUrl    String?
+  positionId    String
+  position      Position @relation(fields: [positionId], references: [id])
+  votes         Vote[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Position {
+  id            String      @id @default(cuid())
+  title         String
+  maxSelections Int         @default(1)
+  candidates    Candidate[]
+  votes         Vote[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model ElectionSettings {
+  id          Int      @id @default(1)
+  isVotingOpen Boolean @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Organization {
+  id            Int      @id @default(1)
+  name          String?
+  electionTitle String?
+  electionDate  DateTime?
+  logoUrl       String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Vote {
+  id          String   @id @default(cuid())
+  voterId     String
+  positionId  String
+  candidateId String
+  createdAt   DateTime @default(now())
+
+  voter     Voter     @relation(fields: [voterId], references: [id])
+  position  Position  @relation(fields: [positionId], references: [id])
+  candidate Candidate @relation(fields: [candidateId], references: [id])
+
+  @@unique([voterId, positionId, candidateId])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String   // CREATE, UPDATE, DELETE, CHECK_IN, VOTE, LOGIN
+  entity    String   // VOTER, CANDIDATE, POSITION, SETTINGS, USER, ORGANIZATION
+  entityId  String?
+  details   String?
+  userId    String?
+  station   String?  // null for admin, CHECK_IN, KIOSK
+  username  String?
+  createdAt DateTime @default(now())
+}
