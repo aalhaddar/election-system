@@ -10,6 +10,25 @@
 - **npm** v9+
 - متصفح حديث (Chrome, Firefox, Edge)
 - اتصال شبكة محلية (للاستخدام في قاعة الانتخابات)
+- **Git** (لتحميل الكود)
+
+## تحميل الكود
+
+### عبر GitHub
+```bash
+git clone https://github.com/aalhaddar/election-system.git
+cd election-system
+```
+
+### عبر ملف مضغوط (بدون GitHub)
+```bash
+# على الجهاز المصدر: إنشاء ملف مضغوط
+Compress-Archive -Path "C:\path\to\project\*" -DestinationPath "election-system.zip" -Exclude "node_modules", "server\node_modules", "dist", "server\prisma\dev.db"
+
+# انسخ الملف إلى الخادم الجديد (USB / شبكة) ثم فك الضغط
+```
+
+---
 
 ## التثبيت والإعداد
 
