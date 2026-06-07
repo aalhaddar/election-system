@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { LayoutDashboard, Users, CheckSquare, Settings, ShieldAlert, KeyRound, X, LogIn, LogOut } from 'lucide-react';
 import './StationSelector.css';
 
+const API = '';
+
 const StationSelector = () => {
   const navigate = useNavigate();
   const [selectedStation, setSelectedStation] = useState(null);
@@ -69,7 +71,7 @@ const StationSelector = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3001/api/auth/login', {
+      const response = await fetch(`${API}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })

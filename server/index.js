@@ -7,6 +7,20 @@ const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const XLSX = require('xlsx');
+const {
+  validate,
+  idParamSchema,
+  personalIdParamSchema,
+  loginSchema,
+  checkInSchema,
+  voteSchema,
+  voterSchema,
+  candidateSchema,
+  positionSchema,
+  orgSchema,
+  stationUserSchema,
+  reportParamsSchema,
+} = require('./validation');
 
 const prisma = new PrismaClient();
 const app = express();
